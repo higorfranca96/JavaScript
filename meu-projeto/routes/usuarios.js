@@ -1,17 +1,22 @@
 const express = require('express');
 const router = express.Router();
 const usuarioController = require('../controllers/usuarioController');
+const validate = require('../middlewares/validate');
+const { cadastroSchema, loginSchema } = require('../validations/usuarioValidation');
 
-// Criar usuário
-router.post('/', usuarioController.criarUsuario);
+router.post('/cadastrar', validate(cadastroSchema), usuarioController.cadastrar);
+router.post('/login', validate(loginSchema), usuarioController.login);
 
-// Listar todos os usuários
-router.get('/', usuarioController.listarUsuarios);
 
-// Editar usuário
-router.put('/:id', usuarioController.atualizarUsuario);
+/// rotas do crud de usuários inicial do projeto
 
-// Deletar usuário
-router.delete('/:id', usuarioController.deletarUsuario);
+// // Listar todos os usuários
+// router.get('/', usuarioController.listarUsuarios);
+
+// // Editar usuário
+// router.put('/:id', usuarioController.atualizarUsuario);
+
+// // Deletar usuário
+// router.delete('/:id', usuarioController.deletarUsuario);
 
 module.exports = router;

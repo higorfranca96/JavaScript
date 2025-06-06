@@ -193,6 +193,10 @@ Use o [Insomnia](https://insomnia.rest/) ou [Postman](https://www.postman.com/) 
 
 ---
 
-Se quiser, posso te ajudar a colocar autenticação JWT, editar/excluir usuários, subir para o Heroku/Vercel e muito mais.
+## Instalando o pacote jsonwebtoken (para gerar e validar token) e bcrypt (para encriptar e validar senha):
 
-Quer que eu monte esse projeto completo em um repositório para você baixar e testar direto?
+npm install jsonwebtoken bcrypt
+
+## Instalando a biblioteca joi (validar os dados recebidos nas rotas antes de criar/atualizar registros no banco)
+
+npm install joi
