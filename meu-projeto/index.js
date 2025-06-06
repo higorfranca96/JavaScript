@@ -7,18 +7,26 @@ const tarefasRoutes  = require('./routes/tarefas');
 const app = express();
 app.use(express.json());
 
-// Conexão com MongoDB
-mongoose.connect(process.env.MONGO_URI, {
-}).then(() => {
-  console.log('MongoDB conectado');
-}).catch(err => console.error(err));
-
 // Rotas
 app.use('/usuarios', usuariosRoutes);
 app.use('/tarefas', tarefasRoutes);
 
-// Inicia servidor
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
-});
+// Só conecta ao MongoDB se não estiver em ambiente de teste
+if (process.env.NODE_ENV !== 'test') {
+  mongoose.connect(process.env.MONGO_URI, {
+  }).then(() => {
+    console.log('MongoDB conectado');
+  }).catch(err => console.error(err));
+
+  // Inicia servidor
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
+  });
+}
+
+module.exports = app; // Exporta app para testes
+
+
+
+
