@@ -1,0 +1,198 @@
+MongoDB string de conexão: mongodb+srv://francahigor96:Ncj7GvL2rZhrWsuF@cluster0.jjmfkot.mongodb.net/
+
+Passo a passo instalação e criação de API simples:
+
+
+## 🧰 1. Pré-requisitos (instalações iniciais)
+
+### a) Instale o **Node.js**:
+
+* Acesse: [https://nodejs.org/](https://nodejs.org/)
+* Baixe a versão LTS (recomendada)
+* Após instalar, abra o terminal e digite:
+
+  ```bash
+  node -v
+  npm -v
+  ```
+
+  Isso deve mostrar as versões instaladas.
+
+### b) Instale o **MongoDB**:
+
+Você pode usar o MongoDB local ou em nuvem. Para facilitar, vamos usar o **MongoDB Atlas (nuvem)**:
+
+1. Vá em: [https://www.mongodb.com/cloud/atlas](https://www.mongodb.com/cloud/atlas)
+2. Crie uma conta gratuita.
+3. Crie um cluster gratuito (M0).
+4. Crie um usuário com senha e copie a **connection string** (vai precisar depois).
+
+---
+
+## 📁 2. Crie seu projeto no VS Code
+
+1. Crie uma nova pasta e abra no VS Code.
+2. Abra o terminal e rode:
+
+   ```bash
+   npm init -y
+   ```
+
+---
+
+## 📦 3. Instale os pacotes necessários
+
+```bash
+npm install express mongoose dotenv
+```
+
+* `express`: framework web para Node
+* `mongoose`: ODM para MongoDB
+* `dotenv`: para usar variáveis de ambiente
+
+---
+
+## 📄 4. Estrutura de pastas (básica)
+
+```
+meu-projeto/
+│
+├── .env
+├── index.js
+├── models/
+│   └── Usuario.js
+└── routes/
+    └── usuarios.js
+```
+
+---
+
+## 🧠 5. Crie o servidor com Express (`index.js`)
+
+```js
+require('dotenv').config();
+const express = require('express');
+const mongoose = require('mongoose');
+
+const app = express();
+app.use(express.json());
+
+// Conexão com MongoDB
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => {
+  console.log('MongoDB conectado');
+}).catch(err => console.error(err));
+
+// Rotas
+const usuariosRoutes = require('./routes/usuarios');
+app.use('/usuarios', usuariosRoutes);
+
+// Inicia servidor
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});
+```
+
+---
+
+## 🌱 6. Variáveis de ambiente (`.env`)
+
+```env
+MONGO_URI=mongodb+srv://usuario:senha@cluster.mongodb.net/meubanco?retryWrites=true&w=majority
+PORT=3000
+```
+
+> Lembre de trocar `usuario`, `senha` e `meubanco` com os dados do MongoDB Atlas.
+
+---
+
+## 👤 7. Modelo Mongoose (`models/Usuario.js`)
+
+```js
+const mongoose = require('mongoose');
+
+const UsuarioSchema = new mongoose.Schema({
+  nome: String,
+  email: String,
+  senha: String,
+}, { timestamps: true });
+
+module.exports = mongoose.model('Usuario', UsuarioSchema);
+```
+
+---
+
+## 🔁 8. Rotas da API (`routes/usuarios.js`)
+
+```js
+const express = require('express');
+const router = express.Router();
+const Usuario = require('../models/Usuario');
+
+// Criar usuário
+router.post('/', async (req, res) => {
+  const { nome, email, senha } = req.body;
+  try {
+    const novoUsuario = await Usuario.create({ nome, email, senha });
+    res.status(201).json(novoUsuario);
+  } catch (err) {
+    res.status(500).json({ erro: err.message });
+  }
+});
+
+// Listar todos os usuários
+router.get('/', async (req, res) => {
+  try {
+    const usuarios = await Usuario.find();
+    res.json(usuarios);
+  } catch (err) {
+    res.status(500).json({ erro: err.message });
+  }
+});
+
+module.exports = router;
+```
+
+---
+
+## ▶️ 9. Rodando o projeto
+
+No terminal, execute:
+
+```bash
+node index.js ou npx nodemon index.js (REINICIA O SERVIDOR AUTOMATICAMENTE APÓS MUDANÇAS)
+```
+
+Você verá algo como:
+
+```
+MongoDB conectado
+Servidor rodando na porta 3000
+```
+
+---
+
+## 🧪 10. Testando a API
+
+Use o [Insomnia](https://insomnia.rest/) ou [Postman](https://www.postman.com/) para testar as rotas:
+
+* `POST http://localhost:3000/usuarios`
+
+  ```json
+  {
+    "nome": "Higor",
+    "email": "higor@email.com",
+    "senha": "123456"
+  }
+  ```
+
+* `GET http://localhost:3000/usuarios`
+
+---
+
+Se quiser, posso te ajudar a colocar autenticação JWT, editar/excluir usuários, subir para o Heroku/Vercel e muito mais.
+
+Quer que eu monte esse projeto completo em um repositório para você baixar e testar direto?
