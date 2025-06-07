@@ -1,0 +1,121 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color:#333652;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+a {
+  font-weight: 500;
+  color: white;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+.button {
+  border-radius: 8px;
+  border: 1px solid #646cff;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  margin:20px;
+}
+.button:hover {
+    color: white;
+    background-color: #646cff;
+}
+.button:focus,
+.button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  margin:10px;
+}
+
+.navItem {
+  border-radius: 6px;
+  margin: 100px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  transition: background 0.2s;
+  background-color: #1a1a1a;
+  border: none;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+}
+
+.navItem:hover {
+  color: #646cff;
+}
+
+.form{
+  display:grid;
+  margin-right: 10px;
+  margin-left:10px;
+  align-items: center;
+  justify-content: center;
+  background-color: #1a1a1a;
+  border-radius:10px;
+}
+
+.formItem{
+  margin-bottom: 20px;
+  border-radius: 2px;
+}
+
+.listTitle{
+  color: #646cff;
+  text-align: center;
+}
+
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  .button {
+    background-color: #f9f9f9;
+  }
+}

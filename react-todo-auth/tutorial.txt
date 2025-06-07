@@ -1,0 +1,87 @@
+## ⚙️ **Criando um projeto React com Vite**
+
+### ✅ Pré-requisitos:
+
+* Node.js instalado
+* NPM ou Yarn
+
+---
+
+### 🧪 **1. Criar o projeto com Vite**
+
+No terminal, digite:
+
+```bash
+npm create vite@latest react-todo-auth -- --template react
+# OU com Yarn:
+# yarn create vite react-todo-auth --template react
+```
+
+Esse comando:
+
+* Cria a pasta `react-todo-auth`
+* Já instala um template React com suporte a módulos modernos e velocidade otimizada
+
+---
+
+### 📦 **2. Acesse a pasta e instale as dependências**
+
+```bash
+cd react-todo-auth
+npm install
+# ou yarn
+```
+
+---
+
+### 🚀 **3. Rode o projeto localmente**
+
+```bash
+npm run dev
+# ou yarn dev
+```
+
+Você verá algo como:
+
+```
+VITE vX.X.X  ready in 300ms
+
+  ➜  Local:   http://localhost:5173/
+```
+
+---
+
+### 📁 **4. Estrutura inicial criada pelo Vite**
+
+```
+react-todo-auth/
+├── index.html
+├── package.json
+├── vite.config.js
+└── src/
+    ├── main.jsx      ← ponto de entrada do app
+    └── App.jsx       ← componente principal
+```
+
+---
+
+### ⚠️ **5. Instale dependências adicionais**
+
+Como o projeto envolve rotas e API:
+
+```bash
+npm install react-router-dom axios
+```
+
+---
+
+### ✅ Vite vs Create React App: por que usar o Vite?
+
+| Vite                             | CRA                  |
+| -------------------------------- | -------------------- |
+| 🔥 Carregamento ultra rápido     | 🐢 Mais lento no dev |
+| ⚡️ Atualização instantânea       | ⏳ Build mais pesado  |
+| 📦 Suporte nativo a ES Modules   | Usa Webpack          |
+| ✍️ Menos opinião e mais flexível | Mais engessado       |
+
+
