@@ -17,6 +17,7 @@ export default function Navbar() {
       {token ? (
         <>
             {/* <Link className='navItem' to="/tarefas">Tarefas</Link> */}
+            <Link className='navItem' to="/tarefas">Minhas tarefas</Link>
             <Link className='navItem' to="/tarefas/nova">Cadastrar tarefa</Link>
             <button className='navItem' onClick={handleLogout}>Sair</button>
         </>

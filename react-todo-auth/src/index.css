@@ -1,11 +1,12 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: system-ui, Avenir, Helvetica, Arial, sans-serif; */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color:#333652;
+  background-color:#071e26;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -29,8 +30,9 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
   min-height: 100vh;
+  align-items: center;
+  justify-content: center;
 }
 
 h1 {
@@ -40,7 +42,7 @@ h1 {
 
 .button {
   border-radius: 8px;
-  border: 1px solid #646cff;
+  border: 1px solid white;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -51,8 +53,8 @@ h1 {
   margin:20px;
 }
 .button:hover {
-    color: white;
-    background-color: #646cff;
+    color: black;
+    background-color: white;
 }
 .button:focus,
 .button:focus-visible {
@@ -64,9 +66,10 @@ h1 {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: #1a1a1a;
+  background-color: black;
   border-radius: 10px;
   margin:10px;
+  border: 1px solid white;
 }
 
 .navItem {
@@ -75,37 +78,87 @@ h1 {
   margin-bottom: 10px;
   margin-top: 10px;
   transition: background 0.2s;
-  background-color: #1a1a1a;
+  background-color: black;
   border: none;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
+  text-align: center;
 }
 
 .navItem:hover {
-  color: #646cff;
+  color: #51abcb;
 }
 
 .form{
   display:grid;
-  margin-right: 10px;
+  margin-right:10px;
   margin-left:10px;
-  align-items: center;
-  justify-content: center;
-  background-color: #1a1a1a;
+  /* align-items: center;
+  justify-content: center; */
+  background-color: #165a72;
   border-radius:10px;
+  border: 1px solid white;
 }
 
 .formItem{
-  margin-bottom: 20px;
-  border-radius: 2px;
+  /* margin-bottom: 20px; */
+  border-radius: 5px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.formItemDS{
+  /* margin-bottom: 20px; */
+  border-radius: 5px;
+  margin-left: 20px;
+  width:25%;
+}
+
+.boxTitleTarefa{
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.titleTarefa{
+  margin:10px;
+}
+
+.tarefaConcluida{
+  background-color: rgb(4, 122, 10);
+  text-shadow: 1px 1px 2px black;
+  border-radius: 10px;
+}
+
+.tarefaEmAberto{
+  background-color: rgb(87, 9, 3);
+  text-shadow: 1px 1px 2px black;
+  border-radius: 10px;
 }
 
 .listTitle{
-  color: #646cff;
+  color: #92cbdf;
   text-align: center;
 }
 
+.rowTarefa{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.colTarefa{
+  margin:10px;
+  background-color: #0f3c4c;
+  width:30%;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.infoTarefa{
+  margin:10px;
+}
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -114,8 +167,5 @@ h1 {
   }
   a:hover {
     color: #747bff;
-  }
-  .button {
-    background-color: #f9f9f9;
   }
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { data, Link } from 'react-router-dom';
 import api from '../services/api';
 
 export default function TodoListPage() {
@@ -15,46 +15,44 @@ export default function TodoListPage() {
     fetchTarefas();
   };
 
+  const ajustaData = (data) => {
+    const dataFormatada = new Date(data);
+    dataFormatada.setDate(dataFormatada.getDate() + 1);
+    return dataFormatada.toLocaleDateString('pt-BR');
+  }
+
   useEffect(() => {
     fetchTarefas();
   }, []);
 
   return (
     <div className='form'>
-      <h2 className='listTitle'>Minhas Tarefas</h2>
-      <table>
-        <thead>
-          <tr>
-            <th className='tableItem'>Título</th>
-            <th className='tableItem'>Descrição</th>
-            <th className='tableItem'>Status</th>
-            <th className='tableItem'>Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tarefas.map((t) => (
-            <tr key={t._id}>
-              <td>{t.titulo}</td>
-              <td>{t.descricao}</td>
-              <td>{t.concluida ? "Concluída" : "Em aberto"}</td>
-              <td>
-                <Link className='button' to={`/tarefas/editar/${t._id}`}>Editar</Link>
-                <button className='button' onClick={() => deleteTarefa(t._id)}>Excluir</button>
-              </td>
-            </tr>  
-          ))}
-        </tbody>
-      </table>
+      <div className='rowTarefa'>
 
-      {/* <ul>
         {tarefas.map((t) => (
-          <li key={t._id}>
-            <strong>{t.titulo}</strong> - {t.descricao} - {t.concluida ? "Concluída" : "Em aberto"}
-            <Link to={`/tarefas/editar/${t._id}`}>Editar</Link>
-            <button onClick={() => deleteTarefa(t._id)}>Excluir</button>
-          </li>
+          <div className='colTarefa' key={t._id}>
+            <div className='infoTarefa'>
+
+              <div className='boxTitleTarefa'>
+                <h3 className='titleTarefa'>{t.titulo}</h3>
+
+              </div>
+              <p>Fazer até <strong>{ajustaData(t.prazo)}</strong></p>
+              <p><strong>{t.concluida ? (<div class='tarefaConcluida'>Concluída</div>) : (<div class='tarefaEmAberto'>Em aberto</div>)}</strong></p>
+
+              <p>{t.descricao}</p>
+
+              <Link className='button' to={`/tarefas/editar/${t._id}`}>Editar</Link>
+              <button className='button' onClick={() => deleteTarefa(t._id)}>Excluir</button>
+            </div>
+          </div>
         ))}
-      </ul> */}
+        {tarefas.length == 0 ? (
+          <div className='semTarefas'>
+            <p>Não há tarefas</p>
+          </div>
+          ): ""}
+      </div>
     </div>
   );
 }

@@ -23,9 +23,9 @@ export default function LoginPage() {
 
   return (
     <form className="form" onSubmit={handleSubmit}>
-      <label><p>Email:</p></label>
+      <label className="formItem"><p>Email:</p></label>
       <input className="formItem" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <label><p>Senha:</p></label>
+      <label className="formItem"><p>Senha:</p></label>
       <input className="formItem" placeholder="Senha" type="password" value={senha} onChange={(e) => setSenha(e.target.value)} />
       <button className='button' type="submit">Entrar</button>
     </form>
