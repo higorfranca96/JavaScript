@@ -11,13 +11,18 @@ export default function CreateEditTaskPage() {
   const { id } = useParams();
 
   useEffect(() => {
-    if (id) {
+    if (id) { //trás os dados da tarefa se o id estiver presente
       api.get(`/tarefas/${id}`).then((res) => {
         setTitulo(res.data.titulo);
         setDescricao(res.data.descricao);
         setConcluida(res.data.concluida);
         setPrazo(res.data.prazo ? new Date(res.data.prazo).toISOString().split('T')[0] : '');
       });
+    }else{ //se não tiver id, limpa os campos
+      setTitulo('');
+      setDescricao('');
+      setConcluida(false);
+      setPrazo('');
     }
   }, [id]);
 

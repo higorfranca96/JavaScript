@@ -11,7 +11,7 @@ exports.criar = async (req, res) => {
 
 exports.listar = async (req, res) => {
   try {
-    const tarefas = await Tarefa.find({ usuario: req.usuarioId }).sort({ prazo: 1 });
+    const tarefas = await Tarefa.find({ usuario: req.usuarioId }).sort({concluida: 1, prazo: 1}); // Ordena por prazo e status
     res.json(tarefas);
   } catch (err) {
     res.status(500).json({ erro: err.message });
